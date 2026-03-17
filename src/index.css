@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+  --background: 0 0% 6.7%;
+  --foreground: 0 0% 100%;
+
+  --card: 0 0% 9%;
+  --card-foreground: 0 0% 100%;
+
+  --popover: 0 0% 9%;
+  --popover-foreground: 0 0% 100%;
+
+  --primary: 0 0% 100%;
+  --primary-foreground: 0 0% 6.7%;
+
+  --secondary: 0 0% 15%;
+  --secondary-foreground: 0 0% 100%;
+
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 55%;
+
+  --accent: 133 100% 50%;
+  --accent-foreground: 0 0% 6.7%;
+}
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+}
+
+body {
+  @apply bg-background text-foreground font-sans antialiased;
+}
