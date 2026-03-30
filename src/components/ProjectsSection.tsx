@@ -1,6 +1,6 @@
 import { ExternalLink, Github } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // 이미지
 import snipvault_img from "../assets/snipvault.png";
@@ -17,8 +17,8 @@ interface Project {
   image1: string;
   image2: string;
   description: string;
-  problem: string;
-  solution: string;
+  whatIDid: string;
+  features: string[];
   techStack: string[];
   github?: string;
   live?: string;
@@ -32,10 +32,15 @@ const projects: Project[] = [
     image2: "",
     description:
       "UI 컴포넌트를 저장하고 실시간 프리뷰로 확인할 수 있는 UI 아카이빙 플랫폼",
-    problem:
-      "UI 컴포넌트를 재사용하거나 공유하기 어려워 개발 효율이 떨어지고, 코드 변경 결과를 즉시 확인하기 어려운 문제",
-    solution:
-      "UI 컴포넌트를 중앙에서 관리할 수 있는 아카이빙 구조를 설계하고, Sandpack 기반 실시간 코드 실행 및 Preview 환경을 구축했습니다.",
+    whatIDid:
+      "프론트엔드 아키텍처와 상태 관리 구조를 설계하고, 실시간 코드 실행 및 Preview 환경을 구현",
+    features: [
+      "Sandpack 기반 실시간 코드 실행 및 Preview 환경 구축",
+      "Redux Toolkit / React Query 기반 상태 관리 및 데이터 흐름 설계",
+      "Next.js API Route와 MongoDB를 활용한 CRUD 기능 구현",
+      "동적 import와 코드 분리를 통한 렌더링 성능 최적화",
+      "LCP 4초 → 2초 개선",
+    ],
     techStack: [
       "React",
       "TypeScript",
@@ -55,10 +60,15 @@ const projects: Project[] = [
     image1: marksphere_img_1,
     image2: markshpere_img_2,
     description: "워크스페이스 기반 북마크 관리 및 지도 시각화 서비스",
-    problem:
-      "맛집이나 여행지처럼 위치가 중요한 북마크를 리스트로만 관리하면 어디에 있는지 한눈에 파악하기 어려운 문제",
-    solution:
-      "Kakao Map API를 활용해 북마크를 지도 위에 시각화하고, 커스텀 클러스터와 오버레이를 적용해 밀집된 데이터를 효율적으로 표현했습니다.",
+    whatIDid:
+      "전체 UI를 구현하고 Redux 기반 상태 관리와 커서 기반 페이지네이션, 지도 시각화 기능을 구현",
+    features: [
+      "워크스페이스 기반 북마크 관리 UI 구현",
+      "커서 기반 페이지네이션을 통한 목록 조회",
+      "Kakao Map API 기반 커스텀 클러스터 및 오버레이 구현",
+      "클라이언트 상태 갱신으로 불필요한 API 요청 최소화",
+      "Suspense 기반 비동기 렌더링으로 초기 로딩 개선",
+    ],
     techStack: ["React", "TypeScript", "Redux", "Tailwind CSS", "vite"],
     github: "https://github.com/Social-Bookmarking/Front",
     live: "https://marksphere.link/",
@@ -69,10 +79,15 @@ const projects: Project[] = [
     image1: meetcarrier_img,
     image2: "",
     description: "콘텐츠-협업 필터링 기반 단계적 친구 매칭 플랫폼",
-    problem:
-      "기존 매칭 서비스는 가벼운 연결에 그쳐 사용자 간 관계가 깊어지기 어렵고, 신뢰 기반의 만남으로 이어지기 어려운 문제",
-    solution:
-      "콘텐츠·협업 필터링을 결합한 매칭 방식을 설계하고, WebSocket 기반 실시간 매칭 구조를 구현했습니다. 또한 설문 → 채팅 → 만남으로 이어지는 단계적 만남 프로세스를 상태 기반 UI로 구성했습니다.",
+    whatIDid:
+      "UI/UX를 설계하고 상태 관리 구조와 단계적 매칭 흐름, 실시간 매칭 기능을 구현",
+    features: [
+      "콘텐츠·협업 필터링 기반 하이브리드 매칭 구조 설계",
+      "설문 → 채팅 → 만남 단계적 매칭 흐름 구현",
+      "WebSocket 기반 실시간 매칭 시스템 구현",
+      "심리 성향 패널티 적용으로 미스매칭률 약 30% 개선",
+      "상태 기반 UI 전환 구조 설계",
+    ],
     techStack: [
       "React",
       "TypeScript",
@@ -89,10 +104,13 @@ const projects: Project[] = [
     image1: omeb_img,
     image2: "",
     description: "감정 기록 도서 추천 플랫폼",
-    problem:
-      "사용자의 감정을 기반으로 콘텐츠를 추천해주는 경험을 제공하고자 기획한 프로젝트",
-    solution:
-      "감정 텍스트를 AI로 분석해 도서를 추천하고, 입력부터 결과까지 자연스럽게 이어지는 UI 흐름을 구현했습니다.",
+    whatIDid: "UI 구현과 API 연동을 통해 감정 기반 도서 추천 흐름을 구현",
+    features: [
+      "감정 기록 및 도서 추천 데이터 처리",
+      "메인 및 마이페이지 UI 구현",
+      "미디어쿼리를 활용한 반응형 UI 적용",
+      "해커톤 MVP 완성 및 시연",
+    ],
     techStack: ["React", "JavaScript", "CSS"],
     github: "https://github.com/LikeLion12th-OMEB/OMEB_FrontEnd",
   },
@@ -101,11 +119,14 @@ const projects: Project[] = [
     title: "Webti",
     image1: webti_img_1,
     image2: webti_img_2,
-    description: "MBTI처럼 웹개발자 성향 테스트 서버",
-    problem:
-      "다른 분야에서는 성향에 따른 직업 추천 서비스가 있는 것처럼, 웹 개발자도 성향에 맞는 역할을 추천해주면 어떨까라는 아이디어에서 시작",
-    solution:
-      "사용자의 응답을 기반으로 개발자 성향을 분석하고, 그에 맞는 역할을 추천하는 테스트를 구현했습니다. 또한 Chart.js를 활용해 결과를 시각화하여 사용자에게 직관적으로 전달했습니다.",
+    description: "웹 개발자 성향을 분석하고 유형화하는 테스트 서비스",
+    whatIDid: "UI/UX를 설계하고 성향 테스트 결과를 시각화하는 기능을 구현",
+    features: [
+      "웹 개발자 성향 테스트 UI 구현",
+      "반응형 UI 설계 (모바일/웹)",
+      "Chart.js 커스터마이징을 통한 결과 시각화",
+      "컴포넌트 구조 및 상태 흐름 설계 경험",
+    ],
     techStack: ["React", "JavaScript", "Tailwind CSS", "Chart.js"],
     github: "https://github.com/team-meot-ppo/webti-frontend",
   },
@@ -113,6 +134,20 @@ const projects: Project[] = [
 
 const ProjectsSection = () => {
   const [activeProject, setActiveProject] = useState<string | null>(null);
+
+  useEffect(() => {
+    projects.forEach((project) => {
+      if (project.image1) {
+        const img1 = new Image();
+        img1.src = project.image1;
+      }
+
+      if (project.image2) {
+        const img2 = new Image();
+        img2.src = project.image2;
+      }
+    });
+  }, []);
 
   return (
     <section id="projects" className="min-h-screen px-6 md:px-16 py-20">
@@ -125,9 +160,20 @@ const ProjectsSection = () => {
         </h2>
 
         <div className="space-y-0">
-          {projects.map((project) => {
+          {projects.map((project, index) => {
             return (
-              <div key={project.id} className="border-t border-[#333333]">
+              <motion.div
+                key={project.id}
+                className="border-t border-[#333333]"
+                initial={{ opacity: 0, x: -48 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{
+                  duration: 0.55,
+                  ease: [0.22, 1, 0.36, 1],
+                  delay: index * 0.08,
+                }}
+              >
                 <button
                   className="w-full py-8 text-left group"
                   onClick={() =>
@@ -188,18 +234,25 @@ const ProjectsSection = () => {
                       <div className="border-l border-accent/30 pl-6 space-y-4 font-mono text-sm">
                         <div>
                           <span className="text-accent text-xs">
-                            // problem
+                            // What I did
                           </span>
                           <p className="text-muted-foreground mt-1">
-                            {project.problem}
+                            {project.whatIDid}
                           </p>
                         </div>
                         <div>
                           <span className="text-accent text-xs">
-                            // solution
+                            // Key Features
                           </span>
                           <p className="text-muted-foreground mt-1">
-                            {project.solution}
+                            {project.features.map((feature) => (
+                              <div
+                                key={feature}
+                                className="leading-6 border-accent/20"
+                              >
+                                - {feature}
+                              </div>
+                            ))}
                           </p>
                         </div>
                         <div>
@@ -243,7 +296,7 @@ const ProjectsSection = () => {
                     </motion.div>
                   </AnimatePresence>
                 )}
-              </div>
+              </motion.div>
             );
           })}
           <div className="border-t border-[#333333]" />
